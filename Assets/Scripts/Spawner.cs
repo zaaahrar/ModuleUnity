@@ -28,7 +28,8 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < _spawnPoints.Length; i++)
         {
-            _spawnPoints[i].SpawnEnemy();
+            MovementToTarget enemy = Instantiate(_spawnPoints[i].Enemy, _spawnPoints[i].transform.position, Quaternion.identity);
+            enemy.SetTarget(_spawnPoints[i].EnemyTarget);
         }
     }
 }

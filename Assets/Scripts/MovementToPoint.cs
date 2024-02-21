@@ -6,6 +6,8 @@ public class MovementToPoint : MonoBehaviour
     [SerializeField, Range(1, 10)] private float _speed;
     [SerializeField] private int _currentPointIndex;
 
+    private readonly float DistanceChangingPoint = 0.1f;
+
     private void Awake()
     {
         _currentPointIndex = 0;
@@ -17,7 +19,7 @@ public class MovementToPoint : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, _points[_currentPointIndex].position, _speed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, _points[_currentPointIndex].position) < 0.1f)
+            if (Vector3.Distance(transform.position, _points[_currentPointIndex].position) < DistanceChangingPoint)
             {
                 _currentPointIndex++;
             }
